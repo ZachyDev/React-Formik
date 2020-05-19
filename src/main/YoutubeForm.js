@@ -1,7 +1,7 @@
-import React from 'react';
-import { useFormik } from 'formik';
+import React from 'react'
+import { useFormik } from 'formik'
 const initialValues = {
-    name: 'Zachy',
+    name: 'Zachary',
     email: '',
     channel: ''
 }
@@ -10,16 +10,15 @@ const onSubmit = values => {
 }
 const validate = values => {
     const errors = {}
+
     if(!values.name) {
-        errors.name = 'Required'
+        errors.name = 'Name is required'
     }
-
     if(!values.email) {
-        errors.email = 'Required'
+        errors.email = 'Email is required'
     }
-
     if(!values.channel) {
-        errors.channel = 'Required'
+        errors.channel = 'Channel is required'
     }
     return errors
 }
@@ -30,27 +29,27 @@ function YoutubeForm() {
         validate
     })
     // console.log('Form values',formik.values)
-    console.log('Visited field',formik.touched)
     // console.log('Form errors',formik.errors)
+    console.log('Visited fields',formik.touched)
     return (
         <div>
             <form onSubmit = { formik.handleSubmit }>
-            <div className = "form-control">
-                <label htmlFor="name">Name</label>
-                <input 
-                    type = "text"
-                    name = "name"
-                    id = "name"
-                    value = { formik.values.name }
-                    onBlur = { formik.handleBlur }
-                    onChange = { formik.handleChange }
+               <div className = 'form-control'>
+                <label htmlFor = "name">Name</label>
+                <input
+                type = "text"
+                name = "name"
+                id = "name"
+                value = { formik.values.name }
+                onBlur = { formik.handleBlur }
+                onChange = { formik.handleChange }
                 />
-                { formik.touched.name && formik.errors.name ? <div className = 'error'> { formik.errors.name } </div> : null }
+                { formik.touched.name && formik.errors.name ? <div className = "error">{ formik.errors.name } </div> : null }
                 </div>
 
-                <div className = "form-control">
-                <label htmlFor="email">Email</label>
-                <input 
+                <div className = 'form-control'>
+                <label htmlFor = "email">Email</label>
+                <input
                 type = "email"
                 name = "email"
                 id = "email"
@@ -58,22 +57,22 @@ function YoutubeForm() {
                 onBlur = { formik.handleBlur }
                 onChange = { formik.handleChange }
                 />
-                { formik.touched.email && formik.errors.email ? <div className = 'error'> { formik.errors.email } </div> : null }
+                { formik.touched.email && formik.errors.email ? <div className = "error">{ formik.errors.email } </div> : null }
                 </div>
-
-                <div className = "form-control">
-                <label htmlFor="channel">Channel</label>
-                <input 
+                
+                <div className = 'form-control'>
+                <label htmlFor = "channel">Channel</label>
+                <input
                 type = "text"
                 name = "channel"
                 id = "channel"
                 value = { formik.values.channel }
                 onBlur = { formik.handleBlur }
-                onChange= { formik.handleChange}
+                onChange = { formik.handleChange }
                 />
-                { formik.touched.channel && formik.errors.channel ? <div className = 'error'> { formik.errors.channel } </div> : null }
+                { formik.touched.channel &&  formik.errors.channel ? <div className = "error">{ formik.errors.channel } </div> : null }
                 </div>
-                <button type = "submit">Submit</button>
+                <button type="submit">Submit</button>
             </form>
         </div>
     )
