@@ -1,6 +1,6 @@
 import React from 'react'
 import { useFormik } from 'formik'
-import * as yup from 'yup'
+import * as Yup from 'yup'
 const initialValues = {
     name: 'Zachary',
     email: '',
@@ -9,10 +9,10 @@ const initialValues = {
 const onSubmit = values => {
     console.log(values)
 }
-const validationSchema = yup.object({
-    name: yup.string().required('Name field is required!'),
-    email: yup.string().required('Email field is required!'),
-    channel: yup.string().required('Channel field is required!')
+const validationSchema = Yup.object({
+    name: Yup.string().required('Name field is required!'),
+    email: Yup.string().required('Email field is required!'),
+    channel: Yup.string().required('Channel field is required!')
 })
 function YoutubeForm() {
     const formik = useFormik({
@@ -32,9 +32,7 @@ function YoutubeForm() {
                 type = "text"
                 name = "name"
                 id = "name"
-                value = { formik.values.name }
-                onBlur = { formik.handleBlur }
-                onChange = { formik.handleChange }
+                { ... formik.getFieldProps('name')}
                 />
                 { formik.touched.name && formik.errors.name ? <div className = "error">{ formik.errors.name } </div> : null }
                 </div>
@@ -45,9 +43,7 @@ function YoutubeForm() {
                 type = "email"
                 name = "email"
                 id = "email"
-                value = { formik.values.email }
-                onBlur = { formik.handleBlur }
-                onChange = { formik.handleChange }
+                {... formik.getFieldProps('email')}
                 />
                 { formik.touched.email && formik.errors.email ? <div className = "error">{ formik.errors.email } </div> : null }
                 </div>
@@ -58,9 +54,7 @@ function YoutubeForm() {
                 type = "text"
                 name = "channel"
                 id = "channel"
-                value = { formik.values.channel }
-                onBlur = { formik.handleBlur }
-                onChange = { formik.handleChange }
+                {... formik.getFieldProps('channel')}
                 />
                 { formik.touched.channel &&  formik.errors.channel ? <div className = "error">{ formik.errors.channel } </div> : null }
                 </div>
