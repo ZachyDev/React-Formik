@@ -1,1 +1,1 @@
-Form handling,form submission,form validation and displaring error messages in React forms using React-Formik.
+Form handling,form submission,form validation and displaring error messages in React forms using React-Formik
